@@ -27,3 +27,11 @@ canvas {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
+
+.red-slime-sprite {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}

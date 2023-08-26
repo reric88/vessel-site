@@ -5,7 +5,9 @@ import RedSlime from './components/RedSlime';
 function App() {
   return (
     <div id='root'>
+      <div className='red-slime-sprite'>
       <RedSlime />
+      </div>
     </div>
   );
 }
