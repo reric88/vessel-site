@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 
 type MoveState = "idle" | "jump" | "ko";
@@ -5,14 +6,15 @@ type MoveState = "idle" | "jump" | "ko";
 const spriteDimensions = {
   idle: { width: 24, height: 15, spd: 100 },
   jump: { width: 26, height: 35, spd: 50 },
-  ko: { width: 32, height: 21, spd: 50 },
+  ko: { width: 32, height: 22, spd: 50 },
 };
 
 export default function RedSlime() {
   const [moveState, setMoveState] = useState<MoveState>("jump");
   const [animationFrame, setAnimationFrame] = useState(0);
+  const [spriteColor, setSpriteColor] = useState('red')
   const [canvasSize, setCanvasSize] = useState({
-    width: spriteDimensions[moveState].width,
+    width: 34,
     height: spriteDimensions[moveState].height,
   });
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -38,8 +40,8 @@ export default function RedSlime() {
       spriteWidth = 26;
       spd = 50;
     } else if (moveState === "ko") {
-      spriteHeight = 21;
-      spriteWidth = 32;
+      spriteHeight = 22;
+      spriteWidth = 33;
       spd = 50;
     }
 
@@ -117,16 +119,17 @@ export default function RedSlime() {
         }
       };
     };
-  }, [moveState]);
+    console.log(spriteColor)
+  }, [moveState, spriteColor]);
 
   const getSpriteSheetURL = (state: string) => {
     switch (state) {
       case "idle":
-        return "/images/slime_red/idle/sp_slime_red_strip6.png";
+        return `/images/slime_${spriteColor}/idle/sp_slime_${spriteColor}_strip6.png`;
       case "ko":
-        return "/images/slime_red/ko/sp_slime_red_ko_strip17.png";
+        return `/images/slime_${spriteColor}/ko/sp_slime_${spriteColor}_ko_strip17.png`;
       case "jump":
-        return "/images/slime_red/jump/sp_slime_red_hop_strip15.png";
+        return `/images/slime_${spriteColor}/jump/sp_slime_${spriteColor}_hop_strip15.png`;
       default:
         return "";
     }
@@ -148,19 +151,32 @@ export default function RedSlime() {
     }
   };
 
+  const changeColor = (color: string) => {
+    setSpriteColor(color)
+  }
+
   return (
     <>
       <div className="red-slime-sprite">
         <canvas
-          style={{ height: `${canvasSize.height}px` }}
+          style={{ height: `${canvasSize.height * 4}px` }}
           ref={canvasRef}
           width={canvasSize.width}
           height={canvasSize.height}
         ></canvas>
       </div>
+      <div className="slime-buttons">
       <button onClick={() => changeState("jump")}>Jump!</button>
       <button onClick={() => changeState("ko")}>Attack!</button>
-      <button onClick={() => changeState("respawn")}>Respawn</button>
+      <button onClick={() => changeState("respawn")}>Spawn</button>
+      </div>
+      <div className="slime-color">
+        <select onChange={(e) => changeColor(e.target.value)} name="slime-color" id="slime-color">
+            <option value="red">Red</option>
+            <option value="blu">Blue</option>
+            <option value="grn">Green</option>
+        </select>
+      </div>
 
     </>
   );

@@ -13,12 +13,13 @@ code {
 }
 
 #root {
+  position: absolute;
 width: 100vw;
-height: 100vh;
-background-color: #0005;
-display: flex;
+/* height: 100%; */
+background-color: #000;
+/* display: flex;
 justify-content: center;
-align-items: center;
+align-items: center; */
 }
 
 canvas {
@@ -28,10 +29,117 @@ canvas {
   image-rendering: crisp-edges;
 }
 
+.slimes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+}
+
+.vessel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+}
+
+.vessel-buttons {
+
+}
+
+.vessel canvas {
+}
+
 .red-slime-sprite {
-  width: 34px;
-  height: 34px;
   display: flex;
   justify-content: center;
   align-items: end;
+  width: 35px;
+  height: 35px;
+}
+
+.slime-buttons {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+header {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0054A6;
+  width: 100%;
+  height: 80px;
+  top: -40px;
+  border-bottom: 2px solid #6DD0F7;
+}
+
+.inner-header {
+  height: 40px;
+  position: sticky;
+  top: 0;
+}
+
+.nav-button {
+  position: sticky;
+  width: 120px;
+  height: 50px;
+  top: 60px;
+  left: 20px;
+  margin-top: 20px;
+  border: 6px solid #0054A6;
+  background-color: #6DD0F7;
+  /* background-color: #0068AB; */
+  /* background-color: #0072BC; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.nav-button:hover {
+  transform: scale(1.02);
+}
+
+.nav-button:hover button {
+  background-color: #0054A6;
+  color: #fffd;
+  transition: 100ms;
+}
+
+.nav-button button {
+  height: 46px;
+  width: 116px;
+  font-size: 22px;
+  color: #0054A6;
+  background-color: #6DD0F7;
+  /* background-color: #0068AB; */
+  /* background-color: #0072BC; */
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: 100ms;
+
+}
+
+.nav-button button span {
+  width: 75px;
+}
+
+nav {
+  position: sticky;
+  top: 124px;
+  left: 0;
+  width: 100%;
+  height:400px;
+  background-color: gray;
+  transform: translateY(-82px);
 }
