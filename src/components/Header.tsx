@@ -1,9 +1,13 @@
 import React from 'react'
 
-export const Header = () => {
+type Props = {
+    isScrolled: boolean
+}
+
+export const Header = (props: Props) => {
   return (
-    <header>
-        <div className="inner-header"></div>
+    <header className={!props.isScrolled ? 'header-large' : 'header-small'}>
+            <h1 className={!props.isScrolled ? 'vessel-large' : 'vessel-small'}>VESSEL</h1>
     </header>
   )
 }

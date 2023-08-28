@@ -8,7 +8,7 @@ const spriteDimensions = {
   spd: 120
 };
 
-export default function RedSlime() {
+export default function Vessel() {
   const [moveState, setMoveState] = useState<MoveState>("idle");
   const [canvasSize, setCanvasSize] = useState({
     width: spriteDimensions.width,
@@ -126,14 +126,12 @@ export default function RedSlime() {
 
   return (
     <>
-      <div className="vessel-sprite">
         <canvas
           style={{ height: `${canvasSize.height * 6}px` }}
           ref={canvasRef}
           width={canvasSize.width}
           height={canvasSize.height}
         ></canvas>
-      </div>
       <div className="vessel-buttons">
       <button onClick={() => changeState("walk")}>Walk</button>
       <button onClick={() => changeState("idle")}>Idle</button>
