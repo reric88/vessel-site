@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 
 type MoveState = "idle" | "walk";
+type Props = {
+  isBoltDone: boolean
+}
 
 const spriteDimensions = {
   width: 12,
   height: 26,
-  spd: 120
+  spd: 120,
 };
 
-export default function Vessel() {
+export default function Vessel(props: Props) {
   const [moveState, setMoveState] = useState<MoveState>("idle");
   const [canvasSize, setCanvasSize] = useState({
     width: spriteDimensions.width,
@@ -27,6 +30,10 @@ export default function Vessel() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+
+setTimeout(()=>{
+  setMoveState('walk')
+}, 1000)
 
     if (moveState === "idle") {
       spd = 99999999;
@@ -63,12 +70,12 @@ export default function Vessel() {
 
       const animate = () => {
         if (moveState === "idle") {
-            col = 0;         
+          col = 0;
         } else if (moveState === "walk") {
           if (col === 8) {
-            col = 0
+            col = 0;
           }
-        } 
+        }
 
         const pos = spritePosition(row, col);
 
@@ -85,7 +92,6 @@ export default function Vessel() {
           spriteHeight
         );
         col += 1;
-
       };
 
       if (intervalRef.current) {
@@ -116,28 +122,26 @@ export default function Vessel() {
   };
 
   const changeState = (v: string) => {
-      if (v === "idle") {
-        setMoveState("idle");
-      } else if (v === "walk") {
-        setMoveState("walk");
-      }
+    if (v === "idle") {
+      setMoveState("idle");
+    } else if (v === "walk") {
+      setMoveState("walk");
+    }
   };
-
 
   return (
     <>
-        <canvas
-          style={{ height: `${canvasSize.height * 6}px` }}
-          ref={canvasRef}
-          width={canvasSize.width}
-          height={canvasSize.height}
-        ></canvas>
-      <div className="vessel-buttons">
-      <button onClick={() => changeState("walk")}>Walk</button>
-      <button onClick={() => changeState("idle")}>Idle</button>
-      </div>
-
+      <canvas
+      className="vessel-canvas fade-in"
+        style={{ height: `${canvasSize.height * 6}px` }}
+        ref={canvasRef}
+        width={canvasSize.width}
+        height={canvasSize.height}
+      ></canvas>
+      {/* <div className="vessel-buttons">
+        <button onClick={() => changeState("walk")}>Walk</button>
+        <button onClick={() => changeState("idle")}>Idle</button>
+      </div> */}
     </>
   );
 }
-

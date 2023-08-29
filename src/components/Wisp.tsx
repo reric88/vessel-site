@@ -51,9 +51,9 @@ export const Wisp = () => {
           }
 
           const pos = spritePosition(row, col);
-if (!context){
-    return
-}
+          if (!context) {
+            return;
+          }
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(
             spriteSheet,
@@ -113,7 +113,7 @@ if (!context){
   return (
     <div className="wisp-sprite">
       <canvas
-      style={{ height: `${spriteHeight * 5}px` }}
+        style={{ height: `${spriteHeight * 5}px` }}
         ref={canvasRef}
         width={spriteWidth}
         height={spriteHeight}
