@@ -11,12 +11,16 @@ import { Backgrounds } from "./components/Backgrounds";
 import { One } from "./components/One";
 import { Two } from "./components/Two";
 import { Wisp } from "./components/Wisp";
+import { Three } from "./components/Three";
+import { Paladin } from "./components/Paladin";
+import { Story } from "./components/Story";
 
 function App() {
   const [navButtonClicked, setNavButtonClicked] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
   const [wispState, setWispState] = useState(undefined);
+  const rootDiv = useRef<HTMLDivElement | null>(null);
 
   const handleSetNavClicked = () => {
     setNavButtonClicked((prev) => !prev);
@@ -36,15 +40,13 @@ function App() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // console.log('window Y', window.innerHeight)
-    // console.log(window.scrollY)
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div id="root">
+    <div ref={rootDiv} id="root">
       <Backgrounds />
       <Header isScrolled={isScrolled} />
       <NavButton
@@ -58,17 +60,14 @@ function App() {
         isScrolled={isScrolled}
         navButtonClicked={navButtonClicked}
       />
-      <One />
+      {/* <One />
       <Two />
-
-      <Footer />
-      {/* <div className="sprite-look">
-      <div className='slimes'><RedSlime /></div>
-      <div className='vessel'><Vessel /></div>
-      <div className="hair-bros">
-        <HairBroOne />
-      </div>
+      <Three />
+      <div className="paladin-div">
+        <Paladin />
       </div> */}
+      <Story />
+      <Footer />
     </div>
   );
 }

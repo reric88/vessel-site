@@ -3,6 +3,8 @@
 :root {
   --chakra: "Chakra Petch";
   --monty: "Montserrat Alternates";
+  --primary: #0054a6;
+  --secondary: #0072bc;
 }
 
 * {
@@ -22,6 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* .sprite-look {
@@ -100,7 +103,7 @@ header {
   display: flex;
   align-items: end;
   justify-content: center;
-  background-color: #0054a6;
+  background-color: var(--primary);
   width: 100%;
   height: 80px;
   /* top: -40px; */
@@ -142,8 +145,10 @@ header h1 {
 }
 
 footer {
-  height: 500px;
-  width: 100%;
+  height: 80px;
+  margin-top: 500px;
+  /* width: 100%; */
+  background-color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: end;
@@ -154,7 +159,7 @@ footer {
   width: 120px;
   height: 50px;
   left: 20px;
-  border: 6px solid #0054a6;
+  border: 6px solid var(--primary);
   background-color: #fefefe;
   /* background-color: #6DD0F7; */
   /* background-color: #0068AB; */
@@ -176,26 +181,26 @@ footer {
 }
 
 .nav-button:hover {
-  background-color: #0054a6;
+  background-color: var(--primary);
 }
 
 .nav-button:hover button {
   /* color: #fff; */
-  background-color: #0054a6;
+  background-color: var(--primary);
   transition: 100ms;
-  color: #0054a6;
+  color: var(--primary);
   background-color: #fefefe;
   /* color: #6DD0F7; */
 }
 
 .nav-button button {
   color: #fefefe;
-  /* border: 1px solid #0054A6; */
+  /* border: 1px solid var(--primary); */
   height: 46px;
   width: 116px;
   font-size: 22px;
-  /* color: #0054A6; */
-  background-color: #0054a6;
+  /* color: var(--primary); */
+  background-color: var(--primary);
   /* background-color: #6DD0F7; */
   /* background-color: #0068AB; */
   /* background-color: #0072BC; */
@@ -217,7 +222,7 @@ nav {
   width: 100%;
   height: 400px;
   background-color: #0072bc;
-  border-bottom: 2px solid #fff;
+  /* border-bottom: 2px solid #fff; */
   display: flex;
   justify-content: center;
   align-items: end;
@@ -335,7 +340,7 @@ nav ul {
 }
 
 .block-one p .blue-span {
-  animation: fadeInBlue 4000ms 10000ms;
+  animation: fadeInBlue 4000ms 8000ms;
   animation-fill-mode: forwards;
 }
 
@@ -352,11 +357,11 @@ nav ul {
 }
 
 .block-two {
-  /* height: 100vh; */
-  /* background-color: #000; */
+  min-height: 100vh;
+  /* background-color: white; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
@@ -374,8 +379,8 @@ nav ul {
   font-size: 30px;
   color: #fff;
   max-width: 600px;
-  margin: 40px 30px;
-  text-align: justify;
+  margin: 10px 30px;
+  text-align: center;
   opacity: 0;
 }
 
@@ -428,11 +433,20 @@ nav ul {
 .fade-in {
   animation: fadeIn 1000ms;
   animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.fade-in:first-of-type {
+  margin-top: 0;
 }
 
 .vessel-enter {
   position: relative;
-  height: 300px;
+  height: 200px;
 }
 
 .vessel-enter canvas {
@@ -447,3 +461,62 @@ nav ul {
   animation: fadeIn 1000ms;
   animation-fill-mode: forwards;
 } */
+
+.block-three {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.screenshots {
+  width: 100vw;
+  max-width: 600px;
+  min-width: 200px;
+  margin: 40px;
+  background-color: var(--secondary);
+  padding: 1px;
+
+}
+
+.screenshots p {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+
+.block-three img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.paladin-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#story {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
+  align-items: center;
+  margin-top: 80px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#story h1 {
+  color: #fff;
+  font-size: 60px;
+  
+}
+
+#story p {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  width: 90%;
+  line-height: 1.3;
+}

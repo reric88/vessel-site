@@ -17,19 +17,19 @@ export const Two = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isBoltDone, setIsBoltDone] = useState(false)
    
-  
+  console.log(scrollY)
   useEffect(()=>{
-    if (scrollY >= 500){
+    if (scrollY >= 700){
       const updateP = {...showP, pOne: true};
       setShowP(updateP)
     }
 
-    if (scrollY >= 900){
+    if (scrollY >= 1100){
       const updateP = {...showP, pTwo: true};
       setShowP(updateP)
     }
 
-    if (scrollY >= 1300){
+    if (scrollY >= 1600){
       const updateP = {...showP, pThree: true};
       setShowP(updateP)
     }
@@ -103,9 +103,9 @@ const handleBoltState = () => {
     <div className="block-two" ref={divRef}>
       {/* <img src="/images/deco/sp_galaxy4.png" alt="" /> */}
       {showP.pOne === true ? 
-      <>
+      <div className="fade-in">
       <canvas
-      className="galaxy-canvas fade-in"
+      className="galaxy-canvas"
       ref={canvasRef}
       // height={'100px'}
       // width={'300px'}
@@ -116,12 +116,13 @@ const handleBoltState = () => {
         The vast expanse of our cosmos beckons, its destiny hanging precariously
         on the precipice of destruction.
       </p>
-      </>
+      </div>
       :
       <></>}
       {showP.pTwo === true ? 
       <>
-      <div className="vessel-enter fade-in">
+      <div className="fade-in">
+      <div className="vessel-enter">
       <Bolt handleBoltState={handleBoltState} />
       {isBoltDone ? <Vessel isBoltDone={isBoltDone} /> : <></>}
       </div>
@@ -131,13 +132,14 @@ const handleBoltState = () => {
         With the ability to transcend time, will you arrive as our savior, or
         will you unwittingly embrace the ominous unraveling of existence itself?
       </p>
+        </div>
       </>
       :
       <></>
       }
         {showP.pThree === true ? 
         <>
-        <div className="wisp-enter">
+        <div className="wisp-enter fade-in">
       <Wisp />
       <p className="scrolled-p" 
       // ref={(ref) => (pRefs.current[2] = ref)}
